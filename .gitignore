@@ -1,0 +1,6 @@
+**/.ipynb_checkpoints/**
+**/input/**
+**/output/**
+**/featurebook/**
+**/kernels/**
+**/__pycache__/**
