@@ -45,5 +45,153 @@ def distance_matrix():
             writer.writerow(md)
 
 
+def distance_matrix_sorted():
+    #test_i = 0
+    df_distance_matrices = pd.read_csv('./input/generated/distance_matrix.csv')
+    atom_representation = {
+        'H': 1, 'C': 6, 'N': 7, 'O': 8, 'F': 9,
+    }
+
+    def append_to_csv(row):
+        with open('./output/sorted_distances_2.csv', 'a', newline='') as sm:
+            wr = csv.writer(sm)
+            wr.writerow(row)
+
+    with open('./input/generated/distance_matrix.csv', 'r') as dm:
+        csv_reader = csv.reader(dm, delimiter=',')
+
+        atoms = None
+        molecule = None
+        molecule_atom_types = {}
+        #result_distances = []
+        result_types = []
+        results = []
+
+        current_row = 0
+
+        first_row = True
+        for row in csv_reader:
+            current_row += 1
+
+            if not first_row and current_row >= 1794299 and current_row <= 1794319:
+                current_molecule = row[0]
+
+                # Go through data => Update atom types => Reset
+                if current_molecule != molecule:
+                    print(current_molecule)
+                    atoms = df_distance_matrices.loc[df_distance_matrices['molecule_name'].isin([current_molecule])]
+                    molecule = current_molecule
+                    molecule_atom_types.clear()
+                    result_distances = []
+                
+                molecule_atom_types[int(row[1])] = row[2]
+                #print(int(row[1]), row[2])
+
+                atom_type_dict = {}
+
+                # FORMAT DISTANCES
+                distances = row[3:]
+                distances = [float(i) for i in distances]
+                for idx, distance in enumerate(distances):
+                    if distance != 0.0:
+                        atom_type_dict[distance] = idx
+                        #print(distance, idx)
+
+                distances = sorted(distances)
+                #print(distances)
+
+                remove_to = None
+                for idx, val in enumerate(reversed(distances)):
+                    if val == 0.0:
+                        remove_to = idx
+                        break
+                
+                distances = distances[len(distances) - remove_to:]
+                distances = sorted(distances)
+                distances = distances + [0.0] * (29 - len(distances))
+                #print(distances)
+
+                # POSITIONAL INFORMATION
+                result_types = []
+
+                for distance in distances:
+                    if distance != 0.0:
+                        distance_position = atom_type_dict[distance]
+                        result_types.append(atom_representation[atoms.loc[atoms['atom_index'] == distance_position, 'atom'].item()])
+
+
+                result_types = result_types + [0] * (29 - len(result_types))
+
+                results = row[:3]
+                #print(results)
+                results.extend(distances)
+                #print(results)
+                results.extend(result_types)
+                #print(results)
+
+                append_to_csv(results)
+
+                results = []
+                #if test_i == 3:
+                #    sys.exit()
+                #test_i += 1
+            else:
+                first_row = False
+
+
+def natoms_maxdist_coupdist():
+    def append_to_csv(row, filename):
+        with open(f'./output/{filename}.csv', 'a', newline='') as outf:
+            wr = csv.writer(outf)
+            wr.writerow(row)
+    
+    with open('./input/generated/distance_matrix.csv', 'r') as dm:
+        csv_reader = csv.reader(dm, delimiter=',')
+
+        molecule = None
+        slice_index = None
+        current_row = 0
+
+        first_row = True
+        for row in csv_reader:
+            current_row += 1
+            print(current_row)
+
+            if not first_row:
+                distances = row[3:]
+                distances = [float(i) for i in distances]
+
+                # Locate slice index
+                current_molecule = row[0]
+                if current_molecule != molecule:
+                    print(current_molecule)
+                    # sys.exit()
+                    slice_index = None
+
+                    for idx, idx_val in enumerate(reversed(distances)):
+                        if idx_val != float(0):
+                            slice_index = (28 - idx)
+                            break
+
+                    molecule = current_molecule
+                
+                distances = distances[:slice_index]
+
+                print(distances)
+                print(f'Number of atoms: {(slice_index)}')
+                print(f'Max distance: {max(distances)}')
+                out_row = row[:3] + [slice_index + 1] + [max(distances)]
+                print(out_row)
+
+                append_to_csv(out_row, 'natoms_max-dist')
+
+                # sys.exit()
+            else:
+                first_row = False
+
+
+
 if __name__ == '__main__':
-    distance_matrix()
+    # distance_matrix()
+    # distance_matrix_sorted()
+    natoms_maxdist_coupdist()
