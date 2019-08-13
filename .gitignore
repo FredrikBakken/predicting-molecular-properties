@@ -1,9 +1,6 @@
 **/.ipynb_checkpoints/**
-**/dask-worker-space/**
 **/input/**
-**/output/**
-**/featurebook/**
-**/kernels/**
 **/__pycache__/**
 **/submissions/**
 distance_matrix.csv
+**/models/**

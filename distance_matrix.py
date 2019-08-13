@@ -5,6 +5,8 @@ import math
 import pandas as pd
 
 def distanceAB(x1, x2, y1, y2, z1, z2):
+    ''' Calculate 
+    '''
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2 + (z1 - z2)**2)
 
 
@@ -46,7 +48,6 @@ def distance_matrix():
 
 
 def distance_matrix_sorted():
-    #test_i = 0
     df_distance_matrices = pd.read_csv('./input/generated/distance_matrix.csv')
     atom_representation = {
         'H': 1, 'C': 6, 'N': 7, 'O': 8, 'F': 9,
@@ -63,7 +64,6 @@ def distance_matrix_sorted():
         atoms = None
         molecule = None
         molecule_atom_types = {}
-        #result_distances = []
         result_types = []
         results = []
 
@@ -85,7 +85,6 @@ def distance_matrix_sorted():
                     result_distances = []
                 
                 molecule_atom_types[int(row[1])] = row[2]
-                #print(int(row[1]), row[2])
 
                 atom_type_dict = {}
 
@@ -95,10 +94,8 @@ def distance_matrix_sorted():
                 for idx, distance in enumerate(distances):
                     if distance != 0.0:
                         atom_type_dict[distance] = idx
-                        #print(distance, idx)
 
                 distances = sorted(distances)
-                #print(distances)
 
                 remove_to = None
                 for idx, val in enumerate(reversed(distances)):
@@ -109,7 +106,6 @@ def distance_matrix_sorted():
                 distances = distances[len(distances) - remove_to:]
                 distances = sorted(distances)
                 distances = distances + [0.0] * (29 - len(distances))
-                #print(distances)
 
                 # POSITIONAL INFORMATION
                 result_types = []
@@ -123,18 +119,11 @@ def distance_matrix_sorted():
                 result_types = result_types + [0] * (29 - len(result_types))
 
                 results = row[:3]
-                #print(results)
                 results.extend(distances)
-                #print(results)
                 results.extend(result_types)
-                #print(results)
 
                 append_to_csv(results)
-
                 results = []
-                #if test_i == 3:
-                #    sys.exit()
-                #test_i += 1
             else:
                 first_row = False
 
@@ -165,7 +154,6 @@ def natoms_maxdist_coupdist():
                 current_molecule = row[0]
                 if current_molecule != molecule:
                     print(current_molecule)
-                    # sys.exit()
                     slice_index = None
 
                     for idx, idx_val in enumerate(reversed(distances)):
@@ -184,8 +172,6 @@ def natoms_maxdist_coupdist():
                 print(out_row)
 
                 append_to_csv(out_row, 'natoms_max-dist')
-
-                # sys.exit()
             else:
                 first_row = False
 
