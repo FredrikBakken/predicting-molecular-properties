@@ -16,23 +16,23 @@ configuration gave satisfactory results. The project used data from the Kaggle C
     ├── .gitignore
     ├── .gitattributes
     ├── notebooks                         
-    │   ├── ?         
-    │   └── main.ipynb
+    │     ├── ?         
+    │     └── main.ipynb
     ├── utils                         
-    │   ├── download.py         
-    │   └── generate.py
+    │     ├── download.py         
+    │     └── generate.py
     ├── models                         
-    │   ├── nn
-    |   |    └── ...
-    │   └── xgb
-    |        └── ...
+    │     ├── nn
+    |     |    └── ...
+    │     └── xgb
+    |          └── ...
     ├── input                         
-    │   ├── sources
-    |   |    └── ...
-    │   └── generated
-    |        └── ...
+    │     ├── sources
+    |     |    └── ...
+    │     └── generated
+    |          └── ...
     ├── submissions                         
-    │   └── best_submission.csv
+    │     └── best_submission.csv
     └── README.md
    
 ## Utilities
