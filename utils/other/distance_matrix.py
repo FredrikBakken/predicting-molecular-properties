@@ -5,12 +5,13 @@ import math
 import pandas as pd
 
 def distanceAB(x1, x2, y1, y2, z1, z2):
-    ''' Calculate 
-    '''
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2 + (z1 - z2)**2)
 
 
 def distance_matrix():
+    ''' Distance Matrix
+    Calculate the distance matrix for each molecule in the dataset.
+    '''
     df_structures = pd.read_csv('input/structures.csv')
     mol_structures = df_structures.iloc[:, 0].unique().tolist()
     print(f'Number of unique molecules: {len(mol_structures)}')
@@ -48,6 +49,9 @@ def distance_matrix():
 
 
 def distance_matrix_sorted():
+    ''' Sorted Distance Matrix
+    Calculate the distance matrix in sorted order, closest to farthest.
+    '''
     df_distance_matrices = pd.read_csv('./input/generated/distance_matrix.csv')
     atom_representation = {
         'H': 1, 'C': 6, 'N': 7, 'O': 8, 'F': 9,
@@ -129,6 +133,9 @@ def distance_matrix_sorted():
 
 
 def natoms_maxdist_coupdist():
+    ''' Collection of Data Generation
+    Generate the number of atoms, max distances, and coupling distances.
+    '''
     def append_to_csv(row, filename):
         with open(f'./output/{filename}.csv', 'a', newline='') as outf:
             wr = csv.writer(outf)
@@ -178,6 +185,6 @@ def natoms_maxdist_coupdist():
 
 
 if __name__ == '__main__':
-    # distance_matrix()
-    # distance_matrix_sorted()
+    distance_matrix()
+    distance_matrix_sorted()
     natoms_maxdist_coupdist()
