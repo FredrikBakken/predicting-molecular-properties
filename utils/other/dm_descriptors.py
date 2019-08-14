@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # Ref: https://www.kaggle.com/borisdee/predicting-mulliken-charges-with-acsf-descriptors?scriptVersionId=15809975
 
 def append_to_csv(row):
-    with open('./output/dm_g1-descriptor_2.csv', 'a', newline='') as sm:
+    with open('./../../input/generated/dm_g1-descriptor.csv', 'a', newline='') as sm:
         wr = csv.writer(sm)
         wr.writerow(row)
 
@@ -69,7 +69,7 @@ def g_one():
     
 
     # Open the distance matrix file
-    with open('./distance_matrix.csv', 'r') as dm:
+    with open('./../../input/generated/distance_matrix.csv', 'r') as dm:
         csv_reader = csv.reader(dm, delimiter=',')
 
         molecule = None
@@ -113,7 +113,7 @@ def g_one():
                 G1_07 = fc(distances, 3.5).sum()
                 G1_08 = fc(distances, 4.0).sum()
                 G1_09 = fc(distances, 4.5).sum()
-                G1_10 = fc(distances, 5.0).sum()
+                G1_10 = fc(distances, 5.0).sum() # 1JHN
                 G1_11 = fc(distances, 5.5).sum()
                 G1_12 = fc(distances, 6.0).sum()
                 G1_13 = fc(distances, 6.5).sum()
