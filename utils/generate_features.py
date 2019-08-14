@@ -326,7 +326,7 @@ def get_features(coupling_type):
 
 # Local testing
 if __name__ == '__main__':
-    train_file, test_file = get_features('1JHC')
+    train_file, test_file = get_features('2JHN')
 
     print(train_file.head())
     print(test_file.head())

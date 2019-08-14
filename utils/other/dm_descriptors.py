@@ -5,6 +5,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+import sys
+sys.path.append('..')
+sys.path.append('../..')
+from generate_features import *
+
 
 # Ref: https://www.kaggle.com/borisdee/predicting-mulliken-charges-with-acsf-descriptors?scriptVersionId=15809975
 
@@ -60,6 +65,9 @@ def g_two():
 
 
 def g_one():
+    get_features('2JHN')
+    
+    '''
     # Definition of the cutoff function
     def fc(Rij, Rc):
         y_1 = 0.5 * (np.cos(np.pi * Rij[Rij <= Rc] / Rc) + 1)
@@ -83,6 +91,7 @@ def g_one():
             if not first_row and current_row > 0:
                 distances = row[3:]
                 distances = [float(i) for i in distances]
+                print(distances)
 
                 # Locate slice index
                 current_molecule = row[0]
@@ -104,11 +113,13 @@ def g_one():
                 distances = np.array(distances, dtype=np.float32)
 
                 # Calculate G1 descriptors
-                G1_01 = fc(distances, 0.5).sum()
+                G1_01 = fc(distances, 0.5) # .sum()
+                print(G1_01)
                 G1_02 = fc(distances, 1.0).sum()
                 G1_03 = fc(distances, 1.5).sum()
                 G1_04 = fc(distances, 2.0).sum()
-                G1_05 = fc(distances, 2.5).sum()
+                G1_05 = fc(distances, 2.5) # .sum()
+                print(G1_05)
                 G1_06 = fc(distances, 3.0).sum()
                 G1_07 = fc(distances, 3.5).sum()
                 G1_08 = fc(distances, 4.0).sum()
@@ -120,12 +131,20 @@ def g_one():
                 G1_14 = fc(distances, 7.0).sum()
 
                 desc_row = row[:3] + [G1_01, G1_02, G1_03, G1_04, G1_05, G1_06, G1_07, G1_08, G1_09, G1_10, G1_11, G1_12, G1_13, G1_14]
-                append_to_csv(desc_row)
+                print(desc_row)
+                #append_to_csv(desc_row)
+                import sys
+                sys.exit()
                 desc_row = []
             else:
                 first_row = False
+    '''
 
 
 if __name__ == '__main__':
     g_one()
     # g_two()
+
+#for row in rows
+#    for col in ['d1x', 'd2x',...,  'd10y']
+#        col = (col <= cutoff) * 0.5 * (np.cos(np.pi * col/ cutoff) + 1)

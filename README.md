@@ -10,12 +10,7 @@
 ---
 
 <p align="center">
-Prediction of the Scalar Coupling Constant of atom pairs in organic molecules from tabular data using
-ensembling of Gradient Boosting Trees and Deep Neural Net methods. Molecular representation with distance
-matrices and ACSF-representation with additional generated angle data was found to be paramount for accurate
-predictions. Gradient Boosting Algorithms (XGB) and Deep Neural Nets were found to have comparable
-accuracy (with Gradient Boosting generally better), and ensembling these methods with a strongly separated
-configuration gave satisfactory results. The project used data from the Kaggle Competition champs-scalar-coupling.
+Prediction of the scalar coupling constant of atom pairs in organic molecules from tabular data using ensembling of gradient boosting trees (XGB) and deep neural networks (DNN) methods in a separate model based meta-architecture. The project used data from the Kaggle competition champs-scalar-coupling.
 </p>
 <br> 
 
@@ -28,41 +23,48 @@ configuration gave satisfactory results. The project used data from the Kaggle C
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-See the [Documentation Note](/documentation.pdf)
+Molecular representation with distance matrices and additional generated angle data used for accurate predictions of a quantum mechanical property. XGB and DNNs were found to have comparable accuracy (with XGB generally better) and ensembling these methods with a strongly separated configuration gave satisfactory results. This repository contains all code needed to replicate our results and can be modified for different methods or datasets.  See the [Documentation Note](/documentation.pdf) for thorough documentation and explanation of the data and the methods used.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+
 
 ### Prerequisites
-What things you need to install the software and how to install them.
+All requirements are listed in the 'requirements.txt'-file, simply run the following commands:
 
 ```
-pip install anaconda
+sudo apt-get install python3.7.3
+sudo apt-get install python3-pip
+python -m pip install -r requirements.txt
 ```
+
+Kaggle API setup: https://github.com/Kaggle/kaggle-api.
 
 ### Installing
 
 Kaggle Download:
 
-Downloads and extracts all necessary data source files from the Kaggle competition and organizes it into a data_sources directory,
-ready to use.
+Downloads and extracts all necessary data source files from the Kaggle competition and organizes it into a data_sources directory, ready to use.
 
 ```
+git clone https://github.com/teamtoll/predicting-molecular-properties.git
+cd predicting-molecular-properties/utils
 python kaggle_download.py
 ```
+Follow any instructions given as output in case of missing files or directories. 
 
 ### File Structure
 
 The hierarchy should look like this:
 
     .
-    ├── .gitignore
-    ├── notebooks                         
-    │     ├── ?         
-    │     └── main.ipynb
-    ├── utils                         
-    │     ├── download.py         
-    │     └── generate.py
+    ├── input                         
+    │     ├── features
+    |     |    └── ...
+    │     ├── generated
+    |     |    └── ...
+    │     └── zipped_source
+    |          └── ...
     ├── models                         
     │     ├── nn
     |     │    ├── nn_model_1JHC.hdf5
@@ -70,20 +72,26 @@ The hierarchy should look like this:
     │     └── xgb
     |          ├── xgb_model_1JHC.hdf5
     |          └── ...
-    ├── input                         
-    │     ├── sources
-    |     |    └── ...
-    │     └── generated
-    |          └── ...
+    ├── notebooks                              
+    │     └── main.ipynb
     ├── submissions                         
-    │     └── best_submission.csv
+    │     └── submission_best.csv
+    ├── utils                         
+    │     ├── other        
+    |     |    ├── distance_matrix.py
+    |     |    └── ...
+    │     ├── check_repository.py
+    │     └── ...
     |
+    ├── .gitignore
     ├── LICENSE
-    └── README.md
+    ├── README.md
+    └── requirements.txt
 
 
 ## 🎈 Usage <a name="usage"></a>
-Run the notebook, tweak hyper-parameters, change up the data, see where it goes. 
+Run the notebook, tweak hyper-parameters, change up the data, see where it goes.
+This repository can also be used as a basis for a completely different problem and dataset. 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Python 3.7](https://www.python.org/) 
@@ -103,14 +111,3 @@ Run the notebook, tweak hyper-parameters, change up the data, see where it goes.
 - Dennis Christensen [@dennis-christensen](https://github.com/dennis-christensen)
 - Niels Aase
 - Kyle Lobo [@kylelobo](https://github.com/kylelobo)
-
-### Kaggle Download
-Downloads and extracts all necessary data source files from the Kaggle competition and organizes it into a data_sources directory,
-ready to use.
-
-`python kaggle_download.py`
-
-### Molecule Visualizer
-Visualize the molecules found in the dataset.
-
-`python molecule_visualizer.py`
