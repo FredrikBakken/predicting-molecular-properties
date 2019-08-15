@@ -35,6 +35,9 @@ All requirements are listed in the 'requirements.txt'-file, simply run the follo
 ```
 sudo apt-get install python3.7
 sudo apt-get install python3-pip
+git clone https://github.com/teamtoll/predicting-molecular-properties.git
+cd predicting-molecular-properties
+python -m pip install -r requirements.txt
 ```
 
 Kaggle API setup: https://github.com/Kaggle/kaggle-api.
@@ -46,9 +49,6 @@ Kaggle Download:
 Downloads and extracts all necessary data source files from the Kaggle competition and organizes it into a data_sources directory, ready to use.
 
 ```
-git clone https://github.com/teamtoll/predicting-molecular-properties.git
-cd predicting-molecular-properties
-python -m pip install -r requirements.txt
 cd utils
 python kaggle_download.py
 ```
@@ -91,7 +91,7 @@ The hierarchy should look like this:
 
 
 ## 🎈 Usage <a name="usage"></a>
-Run the notebook, tweak hyper-parameters, change up the data, see where it goes.
+Run the notebook notebooks/main.iypnb, tweak hyper-parameters, change up the data, see where it goes.
 This repository can also be used as a basis for a completely different problem and dataset. 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
