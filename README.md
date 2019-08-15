@@ -23,7 +23,7 @@ Prediction of the scalar coupling constant of atom pairs in organic molecules fr
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-Molecular representation with distance matrices and additional generated angle data used for accurate predictions of a quantum mechanical property. XGB and DNNs were found to have comparable accuracy (with XGB generally better) and ensembling these methods with a strongly separated configuration gave satisfactory results. This repository contains all code needed to replicate our results and can be modified for different methods or datasets.  See the [Documentation Note](/documentation.pdf) for thorough documentation and explanation of the data and the methods used.
+Molecular representation with distance matrices and additional generated angle data used for accurate predictions of a quantum mechanical property. XGB and DNNs were found to have comparable accuracy (with XGB generally better) and ensembling these methods with a strongly separated configuration gave satisfactory results. This repository contains all code needed to replicate our results and can be modified for different methods or datasets.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
