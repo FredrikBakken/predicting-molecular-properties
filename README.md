@@ -33,9 +33,8 @@ These instructions will get you a copy of the project up and running on your loc
 All requirements are listed in the 'requirements.txt'-file, simply run the following commands:
 
 ```
-sudo apt-get install python3.7.3
+sudo apt-get install python3.7
 sudo apt-get install python3-pip
-python -m pip install -r requirements.txt
 ```
 
 Kaggle API setup: https://github.com/Kaggle/kaggle-api.
@@ -48,7 +47,9 @@ Downloads and extracts all necessary data source files from the Kaggle competiti
 
 ```
 git clone https://github.com/teamtoll/predicting-molecular-properties.git
-cd predicting-molecular-properties/utils
+cd predicting-molecular-properties
+python -m pip install -r requirements.txt
+cd utils
 python kaggle_download.py
 ```
 Follow any instructions given as output in case of missing files or directories. 
