@@ -99,7 +99,7 @@ This repository can also be used as a basis for a completely different problem a
 - [Jupyter Notebook](https://jupyter.org/)
 - [TensorFlow 2.0](https://www.tensorflow.org/) 
 - [Keras](https://keras.io/)
-- [Pandas](https://keras.io/)
+- [Pandas](https://pandas.pydata.org/)
 - [Scikit-learn](https://scikit-learn.org/stable/)
 - [XGBoost](https://xgboost.readthedocs.io/en/latest/)
     
