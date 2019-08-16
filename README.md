@@ -52,7 +52,9 @@ Downloads and extracts all necessary data source files from the Kaggle competiti
 cd utils
 python kaggle_download.py
 ```
-Follow any instructions given as output in case of missing files or directories. 
+Follow any instructions given as output in case of missing files or directories.
+
+Generated files can be downloaded from (place within ./input): https://drive.google.com/file/d/1JN35qpWmMxRAXO28XfLr42ALx1w0Gcia/view?usp=sharing
 
 ### File Structure
 
