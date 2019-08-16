@@ -100,8 +100,10 @@ This repository can also be used as a basis for a completely different problem a
 - [TensorFlow 2.0](https://www.tensorflow.org/) 
 - [Keras](https://keras.io/)
 - [Pandas](https://keras.io/)
+- [Scikit-learn](https://scikit-learn.org/stable/)
 - [XGBoost](https://xgboost.readthedocs.io/en/latest/)
-
+    
+    
 ## ✍️ Authors <a name = "authors"></a>
 - Lars Sandberg [@Sandbergo](https://github.com/Sandbergo)
 - Fredrik Bakken [@FredrikBakken](https://github.com/FredrikBakken) 
